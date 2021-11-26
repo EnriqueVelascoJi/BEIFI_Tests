@@ -56,6 +56,9 @@
                     <button type="submit" class="btn btn-success mb-5 mt-5" :disabled="bloquear">Responder</button>
                 </div>
             </form>
+            <div class="spinner-border" role="status" v-if="spinner">
+                <span class="visually-hidden">Loading...</span>
+            </div>
         </div>
     </div>
 </template>
@@ -75,7 +78,8 @@ export default {
                 respuesta4: '',
                 respuesta5: '',
                 respuesta6: '',
-            }
+            },
+            spinner: false
 
         }
     },
@@ -101,6 +105,10 @@ export default {
         }, 
         async guardarRespuestas() {
             
+            //Iniciamos el spinner
+            this.spinner = true;
+
+            //Logica del Back
             const nombre = this.$route.params.nombre_alumno;
             const identificador = this.generarIdentificador();
             // const respuestas = this.respuestas;
@@ -108,26 +116,26 @@ export default {
             const cuestionario = '1';
 
             //Generamos el arreglo
-            // const nuevoAlumno = {
-            //     nombre,
-            //     identificador,
-            //     version_respuesta,
-            //     cuestionario,
-            //     respuestas
-            // }
             const nuevoAlumno = {
                 nombre,
                 identificador,
                 version_respuesta,
                 cuestionario,
-                respuestas: {
-                    respuesta1: 'test11',
-                    respuesta2: 'test11',
-                    respuesta3: 'test11'
-                }
-            };
-            console.log(nuevoAlumno);
-            const urlAPI = 'http://localhost:3000';
+                respuestas: this.respuestas
+            }
+            // const nuevoAlumno = {
+            //     nombre,
+            //     identificador,
+            //     version_respuesta,
+            //     cuestionario,
+            //     respuestas: {
+            //         respuesta1: 'test11',
+            //         respuesta2: 'test11',
+            //         respuesta3: 'test11'
+            //     }
+            // };
+            // console.log(nuevoAlumno);
+            const urlAPI = 'https://back-beifi-project.herokuapp.com/';
 
             try {
                 const response = await fetch(urlAPI, {
@@ -139,13 +147,41 @@ export default {
                 });
                 const data = await response.json();
                 console.log(data);
+
+                this.$swal({
+                    position: 'top-end',
+                    icon: 'success',
+                    title: 'Registro exitoso',
+                    showConfirmButton: false,
+                    timer: 1500
+                });
+                this.limpiarFormulario();
+                
             } catch (error) {
                 console.log(error);
+
+                this.$swal({
+                    position: 'top-end',
+                    icon: 'error',
+                    title: 'Registro fallido, intente de nuevo',
+                    showConfirmButton: false,
+                    timer: 1500
+                });
             }
             
+
+            //Quitamos el sipinner
+            this.spinner = false;
             
         },
-        
+        limpiarFormulario() {
+            this.respuestas.respuesta1 = "";
+            this.respuestas.respuesta2 = "";
+            this.respuestas.respuesta3 = "";
+            this.respuestas.respuesta4 = "";
+            this.respuestas.respuesta5 = "";
+            this.respuestas.respuesta6 = "";
+        }
     }
 }
 </script>

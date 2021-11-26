@@ -14,7 +14,7 @@
                                       <h1>El enfoque filosófico en la enseñanza de la física moderna a nivel universitario. Aspectos <span>ontológicos y epistemológicos.</span></h1>
                                   </div>
                                   <div class="content_description mt-5 mb-5">
-                                      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quae fugiat ipsam quod veniam vero repudiandae earum, maxime laboriosam quia eum quidem tempora officiis nihil! Laudantium!</p>
+                                      <p>Para selecionar tu cuestionario elige la escuela y el curso que actualmente estas tomando. Adicionalmente escribe tu nombre para tener el registro de tus respuestas.</p>
                                   </div>
                                   <div class="content_action d-flex justify-content-center">
                                       <button class="btn-start btn btn-primary align-center" data-bs-toggle="modal" data-bs-target="#modal1">Iniciar Cuestionario</button>

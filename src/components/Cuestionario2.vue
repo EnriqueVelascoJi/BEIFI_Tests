@@ -76,7 +76,8 @@ export default {
                 respuesta4: '',
                 respuesta5: '',
                 respuesta6: '',
-            }
+            },
+            spinner: false
 
         }
     },
@@ -101,10 +102,10 @@ export default {
             return resultado;
         }, 
         async guardarRespuestas() {
-            
-            //Instanciamos el alert
-            
 
+            //Iniciamos el spinner
+            this.spinner = true;
+           
             const nombre = this.$route.params.nombre_alumno;
             const identificador = this.generarIdentificador();
             // const respuestas = this.respuestas;
@@ -131,7 +132,7 @@ export default {
             //     }
             // };
             console.log(nuevoAlumno);
-            const urlAPI = 'http://localhost:3000';
+            const urlAPI = 'https://back-beifi-project.herokuapp.com/';
 
             try {
                 const response = await fetch(urlAPI, {
@@ -151,6 +152,7 @@ export default {
                     showConfirmButton: false,
                     timer: 1500
                 });
+                this.limpiarFormulario();
 
             } catch (error) {
                 console.log(error);
@@ -164,9 +166,19 @@ export default {
                 });
             }
             
+            //Quitamos el sipinner
+            this.spinner = false;
+            
         
         },
-        
+        limpiarFormulario() {
+            this.respuestas.respuesta1 = "";
+            this.respuestas.respuesta2 = "";
+            this.respuestas.respuesta3 = "";
+            this.respuestas.respuesta4 = "";
+            this.respuestas.respuesta5 = "";
+            this.respuestas.respuesta6 = "";
+        }
     }
     
 }
