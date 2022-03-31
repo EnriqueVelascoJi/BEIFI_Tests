@@ -469,7 +469,7 @@ export default {
                     timer: 1500
                 });
                 this.limpiarFormulario();
-                // this.$route.push('/')
+                this.$router.push('/')
                 
             } catch (error) {
                 console.log(error);
