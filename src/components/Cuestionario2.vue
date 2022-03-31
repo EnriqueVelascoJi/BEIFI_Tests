@@ -2,7 +2,7 @@
 
     <div id="cuestionario_1">
         <div class="main_content container" id="curso">
-            <cuestionario-description numberCuestionario="2"/>
+            <cuestionario-description msgCuestionario="Cuestionario 2"/>
             <div class="main_instructions mb-5">
                 <p>
                     A continuación, se presentan seis preguntas, por favor, responde primeramente <span class="si">Sí</span> o <span class="no">No</span>, y complementa con tus propias palabras tu respuesta:

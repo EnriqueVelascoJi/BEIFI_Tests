@@ -1,6 +1,6 @@
 <template>
     <div class="main_title">
-        <h1>Cuestionario {{numberCuestionario}}</h1>
+        <h1>{{msgCuestionario}}</h1>
     </div>
     <div class="row">
         <div class="img_description col-md-6 d-flex align-self-center">
@@ -14,7 +14,7 @@
 <script>
 export default {
     props: {
-        numberCuestionario: String
+        msgCuestionario: String
     }
 }
 </script>

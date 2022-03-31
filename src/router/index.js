@@ -1,6 +1,7 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import Cuestionario1 from '../components/Cuestionario1.vue'
 import Cuestionario2 from '../components/Cuestionario2.vue'
+import Encuesta from '../components/Encuesta.vue'
 import CuestionarioNotFound from '../components/CuestionarioNotFound.vue'
 
 const routes = [
@@ -13,6 +14,11 @@ const routes = [
     path: '/cuestionario_2/:nombre_alumno',
     name: 'Cuestionario2',
     component: Cuestionario2
+  },
+  {
+    path: '/encuesta/:nombre_alumno',
+    name: 'Encuesta',
+    component: Encuesta
   },
   {
     path: '/cuestionario_not_found',

@@ -65,7 +65,8 @@
                     <option value="2">Variable compleja</option>
                     <option value="3">Electricidad y magnetismo</option>
                     <option value="4">Física general</option>
-                    <option value="5">Otro</option>
+                    <option value="5">Encuesta sobre el curso de filosofía de la ciencia</option>
+                    <option value="6">Otro</option>
                 </select>
                 </div>
             </form>
@@ -106,12 +107,17 @@ export default {
 
       if(this.numeroCurso == '1' && this.numeroEscuela == '1') {
         this.numeroCurso = 1;
-      this.$router.push(`/cuestionario_1/${this.nombreAlumno}`);
+        this.$router.push(`/cuestionario_1/${this.nombreAlumno}`);
 
       } else if(this.numeroCurso == '3' && this.numeroEscuela == '1'){
         this.numeroCurso = 2;
         this.$router.push(`/cuestionario_2/${this.nombreAlumno}`);
-      } else {
+      } else if (this.numeroCurso == '5') {
+        console.log('nsdjdsjsid')
+        this.numeroCurso = 5
+        this.$router.push(`/encuesta/${this.nombreAlumno}`)
+      }
+      else {
         this.$router.push('/cuestionario_not_found');
       }
     }
